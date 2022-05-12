@@ -1,0 +1,58 @@
+let fontBoxCounter = false;  
+
+class Text extends PaintFunction{
+    constructor(contextReal,contextDraft){
+        super();
+        this.contextReal = contextReal;
+        this.contextDraft = contextDraft;
+        this.origX = null;
+        this.origY = null;
+    }
+
+    onMouseDown(coord, style, event){  
+        
+        if (fontBoxCounter == false) {
+            
+            this.origX = coord[0];
+            this.origY = coord[1];
+            this.contextReal.font = `${style.textSize}px ${style.font}`;
+            this.contextReal.fillStyle = style.fillColor;
+            var input = document.createElement('input');
+            input.type = 'text';
+            input.style.position = 'fixed';
+            input.style.border = "2px red solid";
+            input.style.placeholder = 'Please enter your word here';
+            input.style.height = 40;
+            input.style.width = 350;
+            input.style.font = style.font;
+            input.placeholder = "Click here to add text";
+            input.style.left = (this.origX - 5) + 'px';
+            input.style.top = (this.origY - 5) + 'px';
+            input.id= 'textBox' 
+            document.body.appendChild(input);
+            fontBoxCounter = true;
+
+            input.onkeydown = function Clickenter(input) {
+                if (input.key == 'Enter') {
+                    this.typedText= document.getElementById("textBox").value;
+                    contextReal.fillText(this.typedText,event.clientX + 30,event.clientY - 20);
+                    document.body.removeChild(this);
+                    fontBoxCounter = false;
+                    beforeDraw();
+                }
+            };   
+        } 
+    }
+
+    onDragging(){}
+    onMouseMove(){}
+    onMouseUp(){}
+    onMouseLeave(coord){
+        if(coord[0] < this.origX + 300 && coord[0] > this.origX - 300 && coord[1] < this.origY + 40 && coord[1] > this.origY - 40) {
+        } else {
+            $('#textBox').remove();
+            fontBoxCounter = false;
+        }
+    }
+    onMouseEnter(){}
+}

@@ -30,6 +30,8 @@
     <span class="btn btn-info fa fa-paint-brush" id="drawing-line">Pencil</span>
     <!-- Save image button  -->
     <span class="btn btn-info fa fa-square" id="saveimg" onclick="putImage()">Save</span>
+    <!-- Insert Text button -->
+    <span class="btn btn-info fa fa-paint-brush" id="insert-text">Text</span>
   </div>
 
   <!-- jQuery -->
@@ -48,6 +50,8 @@
   <script src="Javascript/save-image.js" type="text/javascript"></script>
   <!-- The drawing rectangle functionality  -->
   <script src="Javascript/rectangle.js" type="text/javascript"></script>
+  <!-- The insert text functionality -->
+  <script src="./Javascript/inserttext.js" type="text/javascript"></script>
   <script type="text/javascript">
     $(() => {
       currentFunction = new DrawingLine(contextReal)
@@ -57,16 +61,15 @@
       $("#drawing-circle").click(() => {
         currentFunction = new DrawingCircle(contextReal, contextDraft);
       });
+      $("#insert-text").click(() => {
+        currentFunction = new Text(contextReal, contextDraft);
+      });
       $("#drawing-straight").click(() => {
         currentFunction = new straightLine(contextReal, contextDraft);
       });
       $("#drawing-line").click(() => {
         currentFunction = new DrawingLine(contextReal);
       });
-      3##
-
-      asdasd
-
     })
   </script>
 </body>
