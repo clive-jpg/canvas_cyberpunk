@@ -24,6 +24,7 @@ class straightLine extends PaintFunction {
   
     onMouseUp(coord, event) {
         this.draw(coord[0], coord[1]);
+        saveToSavePoint();
     }
     onMouseLeave() {}
     onMouseEnter() {}

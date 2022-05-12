@@ -24,6 +24,7 @@
       // Drawing the line here
       this.context.beginPath();
       this.context.moveTo(coord[0], coord[1]);
+      saveToSavePoint();
     }
     // Clicking and removing your mouse
     onDragging(coord, event) {
