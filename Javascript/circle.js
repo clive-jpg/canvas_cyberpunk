@@ -36,7 +36,7 @@ class DrawingCircle extends PaintFunction {
       );
       this.contextReal.stroke();
       this.contextReal.fill();
-      saveToCanvas();
+      saveToSavePoint();
     }
   }
   
