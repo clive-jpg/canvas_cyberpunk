@@ -4,8 +4,7 @@ class Text extends PaintFunction{
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.origX = null;
-        this.origY = null;
+
     }
 
     onMouseDown(coord, style, event){  
@@ -31,13 +30,11 @@ class Text extends PaintFunction{
             document.body.appendChild(input);
             fontBoxCounter = true;
 
-            input.onkeydown = function handleEnter(input) {
+            input.onkeydown = function Clickenter(input) {
                 if (input.key == 'Enter') {
                     this.typedText= document.getElementById("textBox").value;
-                    contextReal.fillText(this.typedText, event.clientX + 30, event.clientY - 20);
-                    document.body.removeChild(this);
+                    contextReal.fillText(this.typedText, 0, 0);
                     fontBoxCounter = false;
-                    beforeDraw();
                 }
             };   
         } 
