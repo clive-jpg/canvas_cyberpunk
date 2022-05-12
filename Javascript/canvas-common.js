@@ -15,6 +15,7 @@
    let mouseY = e.offsetY;
    currentFunction.onMouseDown([mouseX, mouseY], e);
    dragging = true;
+   console.log(currentFunction);
  });
  
  $("#canvas-draft").mousemove(function (e) {
