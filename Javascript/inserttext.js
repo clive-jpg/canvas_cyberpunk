@@ -1,5 +1,4 @@
 let fontBoxCounter = false;  
-
 class Text extends PaintFunction{
     constructor(contextReal,contextDraft){
         super();
@@ -21,21 +20,21 @@ class Text extends PaintFunction{
             input.type = 'text';
             input.style.position = 'fixed';
             input.style.border = "2px red solid";
-            input.style.placeholder = 'Please enter your word here';
+            input.style.placeholder = 'Type here';
             input.style.height = 40;
             input.style.width = 350;
             input.style.font = style.font;
-            input.placeholder = "Click here to add text";
+            input.placeholder = "Please type here";
             input.style.left = (this.origX - 5) + 'px';
             input.style.top = (this.origY - 5) + 'px';
             input.id= 'textBox' 
             document.body.appendChild(input);
             fontBoxCounter = true;
 
-            input.onkeydown = function Clickenter(input) {
+            input.onkeydown = function handleEnter(input) {
                 if (input.key == 'Enter') {
                     this.typedText= document.getElementById("textBox").value;
-                    contextReal.fillText(this.typedText,event.clientX + 30,event.clientY - 20);
+                    contextReal.fillText(this.typedText, event.clientX + 30, event.clientY - 20);
                     document.body.removeChild(this);
                     fontBoxCounter = false;
                     beforeDraw();
